@@ -1,0 +1,107 @@
+#portal {
+    display: flex;
+    justify-content: center;
+    padding-top: 4em;
+    
+    .portal-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 60%;
+        gap: 1em;
+
+        .title {
+            font-size: 3em;
+        }
+        .clubs {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            align-items: center;
+            justify-self: center;
+            gap: 1em;
+
+            .club {
+                padding: 0.8em;
+                width: 100%;
+                border-radius: 0.4em;
+                display: grid;
+                grid-template-columns: 1fr;
+                justify-items: center;
+                gap: 1em;
+                cursor: pointer;
+                
+                .club-image {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    
+                    img {
+                        border: 6px solid var(--primary-dark);
+                        border-radius: 50%;
+                        overflow: hidden;
+                    }
+                }
+            }
+        }
+
+        .voting-panel {
+            width: 100%;
+
+            .header {
+                width: 100%;
+                display: flex;
+                align-items: flex-start;
+                gap: 1em;
+                padding-bottom: 0.8em;
+                margin-bottom: 2em;
+                border-bottom: 1px solid white;
+
+                .back-btn {
+                    width: 3em;
+                    height: 3em;
+                    background-color: var(--primary-dark);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-top: 0.8em;
+                    cursor: pointer;
+
+                    span {
+                        font-size: 2em;
+                    }
+                }
+            }
+
+            .members {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                justify-items: center;
+                row-gap: 2em;
+
+                .member {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+
+                    .member-image {
+                        position: relative;
+
+                        img {
+                            border-radius: 50%;
+                            border: 16px solid var(--primary-dark);
+                            margin-bottom: 1em;
+                        }
+                        button {
+                            position: absolute;
+                            bottom: 5%;
+                            left: 50%;
+                            transform: translateX(-50%);
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+}
