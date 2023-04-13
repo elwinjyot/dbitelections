@@ -16,30 +16,26 @@ const AddClub: FunctionComponent<Props> = ({ closeWindow, clubUpdate }) => {
 
     if (img) {
       formData.append("file", img);
+      formData.append("upload_preset", "dbit-uploads");
+
+      const data = await fetch(
+        "https://api.cloudinary.com/v1_1/dctxew3tq/image/upload",
+        {
+          method: "POST",
+          body: formData,
+        }
+      ).then((res) => res.json());
     }
 
-    formData.append("upload_preset", "dbit-uploads");
+    const response = await fetch("http://localhost:3000/api/create-club", {
+      method: "POST",
+      body: JSON.stringify({ clubName: club.clubName }),
+    }).then((r) => r.json());
 
-    const data = await fetch(
-      "https://api.cloudinary.com/v1_1/dctxew3tq/image/upload",
-      {
-        method: "POST",
-        body: formData,
-      }
-      ).then((res) => res.json());
-      
-      if (data) {
-        const response = await fetch("http://localhost:3000/api/create-club", {
-          method: "POST",
-          body: JSON.stringify({ clubName: club.clubName, img: data.secure_url }),
-        }).then((r) => r.json());
-        
-        if (response) {
-          console.log(response);
-          clubUpdate(response);
-          window.location.reload();
-        }
-      }
+    if (response) {
+      clubUpdate(response);
+      window.location.reload();
+    }
   };
 
   const previewImg: Function = () => {
