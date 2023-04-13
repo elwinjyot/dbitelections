@@ -151,6 +151,9 @@ export const getStaticProps = async () => {
         },
       },
     },
+    orderBy: {
+      clubName: "asc",
+    },
   });
 
   console.log(clubList);

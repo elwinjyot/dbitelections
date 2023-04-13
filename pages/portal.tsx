@@ -50,7 +50,11 @@ interface Props {
 }
 
 export const getStaticProps = async () => {
-  const clubs = await prisma.club.findMany();
+  const clubs = await prisma.club.findMany({
+    orderBy: {
+      clubName: "asc"
+    }
+  });
   if (clubs) {
     return {
       props: { allClubs: clubs },
