@@ -157,7 +157,7 @@
           visibility: hidden;
         }
 
-        &:has(> input:checked) {
+        &:has(> input:checked)n {
           padding-left: 1.4em;
           border-color: var(--secondary);
         }
