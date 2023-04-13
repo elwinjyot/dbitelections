@@ -12,7 +12,7 @@ const AddMember: FunctionComponent<Props> = ({ closeWindow, memUpdate }) => {
     useState<{ clubName: string; id: string }[]>();
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/get-clubs", {
+    fetch("/api/get-clubs", {
       method: "GET",
     }).then((res) => {
       res.json().then((data) => {
