@@ -1,7 +1,7 @@
 #portal {
     display: flex;
     justify-content: center;
-    padding-top: 4em;
+    padding-block: 4em;
 
     .portal-wrapper {
         display: flex;
@@ -152,7 +152,7 @@
     width: 100%;
     min-height: 100vh;
     background-color: #1212127d;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     display: flex;

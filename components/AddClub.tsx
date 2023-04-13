@@ -1,5 +1,4 @@
 import { FunctionComponent, useState } from "react";
-import { IClub } from "../types";
 
 const AddClub: FunctionComponent<Props> = ({ closeWindow, clubUpdate }) => {
   const [loading, setLoading] = useState<boolean>(false);

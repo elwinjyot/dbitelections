@@ -91,6 +91,7 @@ export const getServerSideProps = async (context: any) => {
         clubName: true,
       },
     });
+
     const members = await prisma.member.findMany({
       where: {
         clubId: id,
@@ -102,6 +103,9 @@ export const getServerSideProps = async (context: any) => {
         course: true,
         memberId: true,
       },
+      orderBy: {
+        name: "asc"
+      }
     });
 
     if (members) {

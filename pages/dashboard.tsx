@@ -29,9 +29,9 @@ const Dashboard: FunctionComponent<Props> = ({ members, clubList }) => {
       <section id="dashboard" className="bg-primary container-full">
         <div className="panel">
           <div className="header">
-              <div className="back-btn" onClick={() => {router.back()}}>
-                <span className="material-symbols-rounded">chevron_left</span>
-              </div>
+            <div className="back-btn" onClick={() => { router.back() }}>
+              <span className="material-symbols-rounded">chevron_left</span>
+            </div>
             <div>
               <h1 className="title">Existing Candidates</h1>
               <div className="header-controls" style={{ marginTop: "0.4em" }}>
@@ -63,19 +63,19 @@ const Dashboard: FunctionComponent<Props> = ({ members, clubList }) => {
             </div>
             {allMembers
               ? allMembers.map((member, index) => (
-                  <div className="candidate">
-                    <div className="cell centered">{index + 1}</div>
-                    <div className="cell">
-                      <div className="tiny-preview">
-                        <img src={member.img} alt="" />
-                      </div>
-                      {member.name}
+                <div className="candidate">
+                  <div className="cell centered">{index + 1}</div>
+                  <div className="cell">
+                    <div className="tiny-preview">
+                      <img src={member.img} alt="" />
                     </div>
-                    <div className="cell">{member.Club.clubName}</div>
-                    <div className="cell">{member.position}</div>
-                    <div className="cell centered">{member.votes}</div>
+                    {member.name}
                   </div>
-                ))
+                  <div className="cell">{member.Club.clubName}</div>
+                  <div className="cell">{member.position}</div>
+                  <div className="cell centered">{member.votes}</div>
+                </div>
+              ))
               : null}
           </div>
           <div className="header" style={{ marginTop: "2em" }}>
@@ -100,17 +100,17 @@ const Dashboard: FunctionComponent<Props> = ({ members, clubList }) => {
             </div>
             {clubs
               ? clubs.map((club, index) => (
-                  <div className="candidate">
-                    <div className="cell centered">{index + 1}</div>
-                    <div className="cell">
-                      <div className="tiny-preview">
-                        <img src={club.imgUri} alt="" />
-                      </div>
-                      {club.clubName}
+                <div className="candidate">
+                  <div className="cell centered">{index + 1}</div>
+                  <div className="cell">
+                    <div className="tiny-preview">
+                      <img src={club.imgUri} alt="" />
                     </div>
-                    {/* <div className="cell">{club._count.clubMembers}</div> */}
+                    {club.clubName}
                   </div>
-                ))
+                  {/* <div className="cell">{club._count.clubMembers}</div> */}
+                </div>
+              ))
               : null}
           </div>
         </div>
@@ -138,7 +138,7 @@ export const getStaticProps = async () => {
       },
     },
     orderBy: {
-      votes: "desc",
+      Club: { clubName: "asc" },
     },
   });
   const clubList = await prisma.club.findMany({
@@ -155,8 +155,6 @@ export const getStaticProps = async () => {
       clubName: "asc",
     },
   });
-
-  console.log(clubList);
 
   if (members && clubList) {
     return {
