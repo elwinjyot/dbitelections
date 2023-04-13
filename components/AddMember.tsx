@@ -33,7 +33,7 @@ const AddMember: FunctionComponent<Props> = ({ closeWindow, memUpdate }) => {
       }
     ).then((r) => r.json());
     if (imgUp) {
-      const res = await fetch("http://localhost:3000/api/create-member", {
+      const res = await fetch("/api/create-member", {
         method: "POST",
         body: JSON.stringify({ ...candidate, img: imgUp.secure_url }),
       });

@@ -12,7 +12,7 @@ export default function Vote({ members, clubName }: Props) {
   const router = useRouter();
 
   const vote = async function (id: string) {
-    const res = await fetch("http://localhost:3000/api/vote", {
+    const res = await fetch("/api/vote", {
       method: "POST",
       body: JSON.stringify({
         id: id,

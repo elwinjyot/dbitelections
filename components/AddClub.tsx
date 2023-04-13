@@ -26,7 +26,7 @@ const AddClub: FunctionComponent<Props> = ({ closeWindow, clubUpdate }) => {
       ).then((res) => res.json());
     }
 
-    const response = await fetch("http://localhost:3000/api/create-club", {
+    const response = await fetch("/api/create-club", {
       method: "POST",
       body: JSON.stringify({ clubName: club.clubName }),
     }).then((r) => r.json());
