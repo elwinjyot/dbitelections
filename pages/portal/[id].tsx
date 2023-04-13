@@ -18,7 +18,7 @@ const Portal: FunctionComponent<Props> = ({ allClubs }) => {
             <div className="clubs">
               {" "}
               {clubs.map((club) => (
-                <Link href={`vote/${club.id}`} key={club.id}>
+                <Link href={`/vote/${club.id}`} key={club.id}>
                   <div className="club">
                     <div className="club-image">
                       <Image
@@ -78,7 +78,7 @@ export const getServerSideProps = async (context: any) => {
 
   if (clubs) {
     return {
-      props: { allClubs: clubs },
+      props: { allClubs: clubs, },
     };
   } else {
     props: {
