@@ -1,0 +1,217 @@
+#dashboard {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 8vh;
+
+  .panel {
+    width: 80%;
+
+    .candidate-list {
+      display: grid;
+      grid-template-columns: 1fr;
+
+      .candidate {
+        display: grid;
+        grid-template-columns: auto 1fr 1fr 1fr auto;
+        padding: 0.8em 0em;
+
+        &:nth-child(odd) {
+          background-color: var(--primary-dark);
+        }
+
+        &:nth-child(even) {
+          background-color: #242629;
+        }
+
+        .cell {
+          display: flex;
+          align-items: center;
+
+          .tiny-preview {
+            width: 1.8em;
+            height: 1.8em;
+            border-radius: 50%;
+            margin-right: 0.8em;
+            box-shadow: 0px 0px 0px 3px var(--secondary);
+            overflow: hidden;
+
+            img {
+              width: 100%;
+              height: auto;
+            }
+          }
+        }
+
+        .centered {
+          justify-content: center;
+          min-width: 6em;
+        }
+      }
+    }
+  }
+}
+
+.add-member-window {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  z-index: 9999;
+  background-color: #1212127d;
+
+  .add-member-form {
+    min-width: 25%;
+    padding: 1em;
+    border-radius: 0.6em;
+    background-color: var(--primary);
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 0.8em;
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .input-file {
+      position: relative;
+
+      .preview-img {
+        position: relative;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        justify-content: center;
+
+        span {
+          position: absolute;
+          top: 1.8em;
+          left: 50%;
+          transform: translateX(-50%);
+          background-color: var(--secondary);
+          border-radius: 50%;
+          width: 1.3em;
+          height: 1.3em;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.2em;
+          cursor: pointer;
+        }
+        p {
+          margin-top: 0.7em;
+        }
+        .img-wrapper {
+          max-width: 8rem;
+          max-height: 8rem;
+          overflow: hidden;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 0.6em;
+
+          img {
+            width: 100%;
+            height: auto;
+          }
+        }
+      }
+      input[type="file"] {
+        opacity: 0;
+        cursor: pointer;
+      }
+      button {
+        position: absolute;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        cursor: pointer;
+      }
+    }
+
+    .radio-grp {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8em;
+
+      .radio {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--primary-dark);
+        padding: 0.6em;
+        padding-left: 0em;
+        border-radius: 0.4em;
+        position: relative;
+        transition: 0.3s ease-out 0s;
+        border: 3px solid transparent;
+        cursor: pointer;
+
+        input {
+          visibility: hidden;
+        }
+
+        &:has(> input:checked) {
+          padding-left: 1.4em;
+          border-color: var(--secondary);
+        }
+
+        input:checked~.checkmark {
+          transform: translateY(-50%) scale(1);
+        }
+
+        .checkmark {
+          position: absolute;
+          top: 50%;
+          left: 0.6em;
+          transform: translateY(-50%) scale(0);
+          background-color: var(--secondary);
+          border-radius: 50%;
+          font-size: 1em;
+          width: 1.2em;
+          height: 1.2em;
+          display: flex;
+          transition: 0.3s ease-out 0s;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+  }
+}
+
+.input-grp {
+  width: 100%;
+
+  select {
+    cursor: pointer;
+  }
+
+
+  input,
+  select {
+    width: 100%;
+    padding: 0.6em 0.8em;
+    border: none;
+    border-radius: 0.4em;
+    outline: none;
+    transition: 0.3s ease-out 0s;
+
+    &:focus {
+      outline: 3px solid var(--secondary-hover);
+    }
+  }
+}
+
+.header {
+  .header-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.6em;
+  }
+}

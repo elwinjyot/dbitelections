@@ -1,0 +1,29 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Member {
+  memberId String  @id @default(cuid()) 
+  name     String
+  course   String
+  position String
+  votes    Int
+  img      String?  @default("https://imgs.search.brave.com/TPQDXXL6ho7-V7oPsJ066QUuEBmidADd18kCPUYygSM/rs:fit:720:720:1/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAxNi8w/OC8wOC8wOS8xNy9h/dmF0YXItMTU3Nzkw/OV85NjBfNzIwLnBu/Zw")
+  Club     Club?   @relation(fields: [clubId], references: [id])
+  clubId   String?
+}
+
+model Club {
+  id          String   @id @default(cuid())
+  clubName    String   @unique
+  imgUri      String?   @default("https://imgs.search.brave.com/TPQDXXL6ho7-V7oPsJ066QUuEBmidADd18kCPUYygSM/rs:fit:720:720:1/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAxNi8w/OC8wOC8wOS8xNy9h/dmF0YXItMTU3Nzkw/OV85NjBfNzIwLnBu/Zw")
+  clubMembers Member[]
+}
