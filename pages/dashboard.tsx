@@ -100,7 +100,7 @@ const Dashboard: FunctionComponent<Props> = ({ members, clubList }) => {
             </div>
             {clubs
               ? clubs.map((club, index) => (
-                <div className="candidate">
+                <div className="candidate" key={index}>
                   <div className="cell centered">{index + 1}</div>
                   <div className="cell">
                     <div className="tiny-preview">

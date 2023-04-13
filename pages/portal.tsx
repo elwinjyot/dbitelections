@@ -17,7 +17,7 @@ const Portal: FunctionComponent<Props> = ({ allClubs }) => {
             <div className="clubs">
               {" "}
               {clubs.map((club) => (
-                <Link href={`vote/${club.id}`}>
+                <Link href={`vote/${club.id}`} key={club.id}>
                   <div className="club">
                     <div className="club-image">
                       <Image
