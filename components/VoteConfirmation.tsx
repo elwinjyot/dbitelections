@@ -6,7 +6,7 @@ const VoteConfirmation: FunctionComponent = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      router.push("/portal");
+      router.back();
     }, 3000);
   });
 
