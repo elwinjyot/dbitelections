@@ -124,7 +124,7 @@ interface Props {
   clubList: string;
 }
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const members = await prisma.member.findMany({
     select: {
       name: true,
