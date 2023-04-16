@@ -8,10 +8,12 @@ import VoteConfirmation from "../../components/VoteConfirmation";
 export default function Vote({ members, clubName }: Props) {
   const [allMembers] = useState<IMember[]>(JSON.parse(members));
   const [showConf, setShowConf] = useState<boolean>(false);
+  const [voting, setVoting] = useState<boolean>(false);
 
   const router = useRouter();
 
   const vote = async function (id: string) {
+    setVoting(true);
     const res = await fetch("/api/vote", {
       method: "POST",
       body: JSON.stringify({
@@ -20,7 +22,8 @@ export default function Vote({ members, clubName }: Props) {
     });
 
     if (res) {
-      res.json().then((data) => {
+      res.json().then(() => {
+        setVoting(false);
         setShowConf(true);
       });
     }
@@ -33,7 +36,12 @@ export default function Vote({ members, clubName }: Props) {
         <section className="portal-wrapper">
           <div className="voting-panel panel">
             <div className="header">
-              <div className="back-btn" onClick={() => {router.back()}}>
+              <div
+                className="back-btn"
+                onClick={() => {
+                  router.back();
+                }}
+              >
                 <span className="material-symbols-rounded">chevron_left</span>
               </div>
               <div>
@@ -52,6 +60,7 @@ export default function Vote({ members, clubName }: Props) {
                       alt={mem.name}
                     />
                     <button
+                      disabled={voting ? true : false}
                       className="btn-primary"
                       onClick={() => {
                         vote(mem.memberId);
@@ -104,8 +113,8 @@ export const getServerSideProps = async (context: any) => {
         memberId: true,
       },
       orderBy: {
-        name: "asc"
-      }
+        name: "asc",
+      },
     });
 
     if (members) {
