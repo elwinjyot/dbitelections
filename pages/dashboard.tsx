@@ -138,7 +138,7 @@ export const getServerSideProps = async () => {
       },
     },
     orderBy: {
-      votes: "desc",
+      Club: { clubName: "asc" }
     },
   });
   const clubList = await prisma.club.findMany({
